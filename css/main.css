@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #e81de1;
+    --primary-color: #9E1099;
     --secondary-color: #433269;
     --background-color: #261d3b;
     --background-color-1: #3a314d;
@@ -43,16 +43,16 @@ main {
 .album_art__full img {
     margin: 2rem;
     box-shadow: 0 0 30px var(--accent-color);
-    border-radius: 4rem;
+    border-radius: .5rem;
     height: 250px;
     width: 250px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    -webkit-border-radius: 4rem;
-    -moz-border-radius: 4rem;
-    -ms-border-radius: 4rem;
-    -o-border-radius: 4rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
 }
 
 .album_art__full button {
@@ -93,22 +93,27 @@ main {
 }
 
 .actual a {
+    font-weight: bold;
     animation: titleAnimation 8s infinite;
     background-color: var(--primary-color) !important;
     border-bottom: solid var(--accent-color) .3rem;
-    border-radius: 1rem;
+    border-radius: .5rem;
     box-shadow: 0 0 1rem var(--accent-color);
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
 }
 
 .track__item a {
     background-color: var(--secondary-color);
     margin: 1rem;
     color: var(--text-color);
-    border-radius: 1rem;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    -o-border-radius: 1rem;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
 }
 
 .track__details {
@@ -119,11 +124,11 @@ main {
     height: 100px;
     width: 100px;
     padding: .5rem;
-    border-radius: 2rem;
-    -webkit-border-radius: 2rem;
-    -moz-border-radius: 2rem;
-    -ms-border-radius: 2rem;
-    -o-border-radius: 2rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
 }
 
 /* Footer */
@@ -181,11 +186,11 @@ button {
     background: var(--accent-color);
     width: 4rem;
     height: 4rem;
-    border-radius: 3rem;
-    -webkit-border-radius: 3rem;
-    -moz-border-radius: 3rem;
-    -ms-border-radius: 3rem;
-    -o-border-radius: 3rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
 }
 
 button:hover {
