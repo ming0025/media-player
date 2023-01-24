@@ -217,15 +217,15 @@ button:hover {
 
 /* Responsive */
 
-@media only screen and (min-width: 50em) {
+@media only screen and (min-width: 45em) {
     
     .content {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .album_art__full img {
-        height: 380px;
-        width: 380px;
+        height: 330px;
+        width: 330px;
     }
 }
 
