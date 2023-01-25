@@ -183,6 +183,7 @@ footer {
 }
 
 button {
+    border: solid var(--accent-color);
     background: var(--accent-color);
     width: 4rem;
     height: 4rem;
@@ -194,7 +195,8 @@ button {
 }
 
 button:hover {
-    background-color: #056e77;
+    background-color: var(--primary-color);
+    color: var(--text-color)
 }
 
 .btnPlay {
@@ -272,20 +274,20 @@ button:hover {
     }
 
     25% {
-        text-shadow: 0 0 12px #1e00ff;
+        text-shadow: 0 0 12px #0008ff;
     }
 
     50% {
-        text-shadow: 0 0 20px #1e00ff;
+        text-shadow: 0 0 20px #0008ff;
         color: #47e0e8;
     }
 
     75% {
-        text-shadow: 0 0 12px #1e00ff;
+        text-shadow: 0 0 12px #0008ff;
     }
 
     100% {
-        text-shadow: 0 0 3px #1e00ff;
+        text-shadow: 0 0 3px #0008ff;
         color: #fff;
     }
 }
