@@ -23,8 +23,8 @@ header {
 header h1{
     margin-bottom: 0;
     padding-top: .5rem;
-    animation: titleAnimation 8s infinite;
-    -webkit-animation: titleAnimation 8s infinite;
+    animation: neonAnimation 8s infinite;
+    -webkit-animation: neonAnimation 8s infinite;
 }
 
 /* Content */
@@ -94,7 +94,7 @@ main {
 
 .actual a {
     font-weight: bold;
-    animation: titleAnimation 8s infinite;
+    animation: neonAnimation 8s infinite;
     background-color: var(--primary-color) !important;
     border-bottom: solid var(--accent-color) .3rem;
     border-radius: .5rem;
@@ -170,6 +170,7 @@ footer {
     transform: translate(2.1px, 2.5px) ;
     height: .3rem;
     width: 80%;
+    box-shadow: 0 0 1rem var(--accent-color);
     background-color: var(--accent-color);
     border-radius: 4px;
     -webkit-transform: translate(2.1px, 2.5px) ;
@@ -180,11 +181,13 @@ footer {
 
 .track__time {
     padding-right: 1rem;
+    margin: .5rem;
 }
 
 button {
     border: solid var(--accent-color);
     background: var(--accent-color);
+    cursor: pointer;
     width: 4rem;
     height: 4rem;
     border-radius: 1rem;
@@ -195,8 +198,11 @@ button {
 }
 
 button:hover {
+    box-shadow: 0 0 1rem var(--accent-color);
     background-color: var(--primary-color);
-    color: var(--text-color)
+    color: var(--text-color);
+    animation: neonAnimation 8s infinite;
+    -webkit-animation: neonAnimation 8s infinite;
 }
 
 .btnPlay {
@@ -231,16 +237,20 @@ button:hover {
     }
 
     .album_art__full img {
-        height: 330px;
-        width: 330px;
+        height: 370px;
+        width: 370px;
+    }
+
+    .track__details {
+        width: 40%;
     }
 }
 
 @media only screen and (min-width: 60em) {
     
     .album_art__full img {
-        height: 450px;
-        width: 450px;
+        height: 500px;
+        width: 500px;
     }
 
     .actual a {
@@ -263,11 +273,24 @@ button:hover {
     header h1 {
         padding-top: 0rem;
     }
+
+    .track__details {
+        width: 50%;
+    }
+
+    .track__time {
+        padding-right: 2rem;
+        margin: .5rem;
+    }
+
+    main {
+        font-size: 1.125rem;
+    }
 }
 
 /* Animation */
 
-@keyframes titleAnimation {
+@keyframes neonAnimation {
     0% {
         text-shadow: 0 0 3px #1e00ff;
         color: #fff;
