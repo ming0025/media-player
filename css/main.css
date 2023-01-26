@@ -40,6 +40,7 @@ main {
     height: 72vh;
 }
 
+
 .album_art__full img {
     margin: 2rem;
     box-shadow: 0 0 30px var(--accent-color);
@@ -128,13 +129,13 @@ main {
 }
 
 .track__thumb img {
-    height: 80px;
-    width: 80px;
-    border-radius: 1rem;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
-    -ms-border-radius: 1rem;
-    -o-border-radius: 1rem;
+    height: 60px;
+    width: 60px;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
 }
 
 /* Footer */
