@@ -95,7 +95,6 @@ main {
 }
 
 .actual a {
-    font-weight: bold;
     animation: neonAnimation 8s infinite;
     background-color: var(--primary-color) !important;
     border-bottom: solid var(--accent-color) .3rem;
@@ -136,6 +135,10 @@ main {
     -moz-border-radius: .5rem;
     -ms-border-radius: .5rem;
     -o-border-radius: .5rem;
+}
+
+.track__title {
+    font-weight: bold;
 }
 
 /* Footer */
