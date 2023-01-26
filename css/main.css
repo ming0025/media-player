@@ -13,8 +13,8 @@ header {
     font-family: 'Monoton', cursive;
     width: 100%;
     height: 10vh;
-    min-height: rem;
-    font-size: 1.5rem;
+    min-height: 4.5rem;
+    font-size: 1.3rem;
     background-color: var(--background-color-1);
     color: var(--text-color);
     text-align: center;
@@ -31,21 +31,21 @@ header h1{
 
 main {
     background-color: var(--background-color);
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .content {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    height: 70vh;
+    height: 72vh;
 }
 
 .album_art__full img {
     margin: 2rem;
     box-shadow: 0 0 30px var(--accent-color);
     border-radius: .5rem;
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -105,6 +105,7 @@ main {
     -o-border-radius: .5rem;
 }
 
+
 .track__item a {
     background-color: var(--secondary-color);
     margin: 1rem;
@@ -121,9 +122,9 @@ main {
 }
 
 .track__thumb img {
-    height: 100px;
-    width: 100px;
-    padding: .5rem;
+    padding: .5rem .5rem .2rem .5rem;
+    height: 80px;
+    width: 80px;
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
@@ -135,9 +136,7 @@ main {
 
 footer {
     width: 100%;
-    font-size: 1.5rem;
-    min-height: 10rem;
-    height: 20vh;
+    height: 18vh;
     background-color: var(--background-color-1);
     color: var(--text-color);
     text-shadow: 1px 1px var(--accent-color);
@@ -151,6 +150,7 @@ footer {
 
 .times {
     padding-top: 1rem;
+    font-size: 1.2rem;
 }
 
 .progress {
@@ -188,8 +188,8 @@ button {
     border: solid var(--accent-color);
     background: var(--accent-color);
     cursor: pointer;
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 1rem;
     -webkit-border-radius: 1rem;
     -moz-border-radius: 1rem;
@@ -206,26 +206,26 @@ button:hover {
 }
 
 .btnPlay {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
 }
 
-.btnPrev {
+.btnPrev{
     margin-right: 1rem;
-    transform: translateY(.5rem);
-    -webkit-transform: translateY(.5rem);
-    -moz-transform: translateY(.5rem);
-    -ms-transform: translateY(.5rem);
-    -o-transform: translateY(.5rem);
+    transform: translateY(15%);
+    -webkit-transform: translateY(15%);
+    -moz-transform: translateY(15%);
+    -ms-transform: translateY(15%);
+    -o-transform: translateY(15%);
 }
 
 .btnNext {
     margin-left: 1rem;
-    transform: translateY(.5rem);
-    -webkit-transform: translateY(.5rem);
-    -moz-transform: translateY(.5rem);
-    -ms-transform: translateY(.5rem);
-    -o-transform: translateY(.5rem);
+    transform: translateY(15%);
+    -webkit-transform: translateY(15%);
+    -moz-transform: translateY(15%);
+    -ms-transform: translateY(15%);
+    -o-transform: translateY(15%);
 }
 
 /* Responsive */
@@ -236,6 +236,10 @@ button:hover {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    header {
+        font-size: 1.5rem;
+    }
+
     .album_art__full img {
         height: 370px;
         width: 370px;
@@ -244,13 +248,50 @@ button:hover {
     .track__details {
         width: 40%;
     }
+
+    main {
+        font-size: 1rem;
+    }
+
+    .track__thumb img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .times {
+        padding-top: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .btnPlay {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    button {
+        border: solid var(--accent-color);
+        background: var(--accent-color);
+        cursor: pointer;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 1rem;
+        -webkit-border-radius: 1rem;
+        -moz-border-radius: 1rem;
+        -ms-border-radius: 1rem;
+        -o-border-radius: 1rem;
+    }
+
+    .track__thumb img {
+        height: 90px;
+        width: 90px;
+    }
 }
 
 @media only screen and (min-width: 60em) {
     
     .album_art__full img {
-        height: 500px;
-        width: 500px;
+        height: 480px;
+        width: 480px;
     }
 
     .actual a {
@@ -267,7 +308,7 @@ button:hover {
     }
 
     header {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     header h1 {
@@ -285,6 +326,12 @@ button:hover {
 
     main {
         font-size: 1.125rem;
+    }
+    
+    .track__thumb img {
+        padding: .5rem;
+        height: 100px;
+        width: 100px;
     }
 }
 
