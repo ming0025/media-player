@@ -248,6 +248,7 @@ button:hover {
     
     .content {
         grid-template-columns: repeat(2, 1fr);
+        overflow-y: scroll;
     }
 
     header {
@@ -257,7 +258,18 @@ button:hover {
     .album_art__full img {
         height: 370px;
         width: 370px;
+        position: sticky;
+        top: 2.5rem;
     }
+
+    .album_art__full button {
+        margin: auto;
+        position: absolute;
+        top: 40%;
+        left: 0;
+        bottom: 0;
+        right: 50%;
+}
 
     .track__details {
         width: 40%;
@@ -298,10 +310,6 @@ button:hover {
     .track__thumb img {
         height: 90px;
         width: 90px;
-    }
-
-    .playlist {
-        overflow-y: scroll;
     }
 }
 
@@ -349,6 +357,15 @@ button:hover {
     .track__thumb img {
         height: 100px;
         width: 100px;
+    }
+
+    .album_art__full button {
+        margin: auto;
+        position: absolute;
+        top: 72%;
+        left: 0;
+        bottom: 0;
+        right: 50%;
     }
 }
 
