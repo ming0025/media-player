@@ -360,8 +360,6 @@ button:hover {
     }
 
     .album_art__full button {
-        margin: auto;
-        position: absolute;
         top: 72%;
         left: 0;
         bottom: 0;
