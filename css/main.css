@@ -13,7 +13,8 @@ header {
     font-family: 'Monoton', cursive;
     width: 100%;
     height: 10vh;
-    min-height: 4.5rem;
+    position: absolute;
+    top: 0rem;
     font-size: 1.3rem;
     background-color: var(--background-color-1);
     color: var(--text-color);
@@ -32,6 +33,9 @@ header h1{
 main {
     background-color: var(--background-color);
     font-size: 0.8rem;
+    position: absolute;
+    width: 100%;
+    top: 10vh;
 }
 
 .content {
@@ -146,6 +150,8 @@ main {
 footer {
     width: 100%;
     height: 18vh;
+    position: absolute;
+    bottom: 0rem;
     background-color: var(--background-color-1);
     color: var(--text-color);
     text-shadow: 1px 1px var(--accent-color);
