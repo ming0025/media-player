@@ -31,8 +31,8 @@ const MEDIA = [
     artist: 'The Clash',
     title: 'Should I Stay or Should I Go',
     track: 'should-i-stay.mp3',
-    thumbnail: 'should-i-stay.png',
-    large: 'should-i-stay.jpg',
+    thumbnail: 'the-clash-combat.png',
+    large: 'the-clash-combat.jpg',
     },
     {
     artist: "Guns'n Roses",

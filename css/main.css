@@ -7,6 +7,10 @@
     --text-color: #ecfcff;
 }
 
+.hidden {
+    display: none
+}
+
 /* Header */
 
 header {
@@ -184,7 +188,7 @@ footer {
 .progress-bar {
     transform: translate(2.1px, 2.5px) ;
     height: .3rem;
-    width: 80%;
+    width: 0.1%;
     box-shadow: 0 0 1rem var(--accent-color);
     background-color: var(--accent-color);
     border-radius: 4px;
@@ -257,7 +261,7 @@ button:hover {
     .album_art__full {
         left: 1%;
         right: 50%;
-        margin-top: 5rem;
+        margin-top: 2rem;
         position: fixed;
     }
 
