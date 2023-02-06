@@ -11,10 +11,10 @@
 
 header {
     font-family: 'Monoton', cursive;
+    position: fixed;
+    top: 0rem;
     width: 100%;
     height: 10vh;
-    position: absolute;
-    top: 0rem;
     font-size: 1.3rem;
     background-color: var(--background-color-1);
     color: var(--text-color);
@@ -33,16 +33,14 @@ header h1{
 main {
     background-color: var(--background-color);
     font-size: 0.8rem;
-    position: absolute;
     width: 100%;
-    top: 10vh;
+    top: 10rem;
 }
 
 .content {
+    margin-top: 5.5rem;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    height: 72vh;
-    overflow-y: scroll;
 }
 
 
@@ -50,8 +48,8 @@ main {
     margin: 2rem;
     box-shadow: 0 0 30px var(--accent-color);
     border-radius: .5rem;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -68,7 +66,8 @@ main {
 }
 
 .playlist {
-    margin-top: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 11rem;
     justify-items: center;
 }
 
@@ -80,6 +79,7 @@ main {
 .playlist ul li a {
     align-items: center;
     text-decoration: none;
+    height: 6rem;
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
@@ -132,8 +132,8 @@ main {
 }
 
 .track__thumb img {
-    height: 60px;
-    width: 60px;
+    height: 80px;
+    width: 80px;
     border-radius: .5rem;
     -webkit-border-radius: .5rem;
     -moz-border-radius: .5rem;
@@ -150,7 +150,7 @@ main {
 footer {
     width: 100%;
     height: 18vh;
-    position: absolute;
+    position: fixed;
     bottom: 0rem;
     background-color: var(--background-color-1);
     color: var(--text-color);
@@ -247,27 +247,28 @@ button:hover {
 @media only screen and (min-width: 45em) {
     
     .content {
-        grid-template-columns: repeat(2, 1fr);
-        overflow-y: scroll;
+        grid-template-columns: repeat(12, 1fr);
     }
 
     header {
         font-size: 1.5rem;
     }
 
+    .album_art__full {
+        left: 1%;
+        right: 50%;
+        margin-top: 5rem;
+        position: fixed;
+    }
+
     .album_art__full img {
-        height: 370px;
-        width: 370px;
-        position: sticky;
-        top: 2.5rem;
+        height: 340px;
+        width: 340px;
     }
 
     .album_art__full button {
         margin: auto;
-        position: absolute;
-        top: 40%;
         left: 0;
-        bottom: 0;
         right: 50%;
 }
 
@@ -287,6 +288,14 @@ button:hover {
     .times {
         padding-top: 1rem;
         font-size: 1.3rem;
+    }
+
+    .playlist {
+        grid-column: 7 / 13;
+    }
+
+    .playlist ul li a {
+        height: auto;
     }
 
     .btnPlay {
@@ -314,6 +323,10 @@ button:hover {
 }
 
 @media only screen and (min-width: 60em) {
+
+    .album_art__full {
+        left: 5;
+    }
     
     .album_art__full img {
         height: 480px;
@@ -357,13 +370,6 @@ button:hover {
     .track__thumb img {
         height: 100px;
         width: 100px;
-    }
-
-    .album_art__full button {
-        top: 72%;
-        left: 0;
-        bottom: 0;
-        right: 50%;
     }
 }
 
