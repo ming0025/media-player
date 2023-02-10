@@ -251,6 +251,7 @@ button:hover {
     
     .content {
         grid-template-columns: repeat(12, 1fr);
+        padding-top: 2rem;
     }
 
     header {
@@ -260,7 +261,6 @@ button:hover {
     .album_art__full {
         left: 1%;
         right: 50%;
-        margin-top: 4rem;
         position: fixed;
     }
 
@@ -295,7 +295,6 @@ button:hover {
 
     .playlist {
         grid-column: 7 / 13;
-        margin-top: 4rem;
     }
 
     .playlist ul li a {
