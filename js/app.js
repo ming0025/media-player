@@ -12,8 +12,13 @@ const APP = {
   },
   addListeners: () => {
     //add event listeners for interface elements
-    document.getElementById('btnPlay').addEventListener('click', APP.play)
-    document.getElementById('btnPause').addEventListener('click', APP.pause)
+    document.getElementById('btnPlay').addEventListener('click', (ev) => {
+      if (ev.target.innerHTML == '<i class="material-symbols-rounded">play_arrow</i>' || ev.target.innerHTML == 'play_arrow') {
+        APP.play();
+      } else if (ev.target.innerHTML == '<i class="material-symbols-rounded">pause</i>' || ev.target.innerHTML == 'pause'){
+        APP.pause();
+      }
+    })
     //add event listeners for APP.audio
     APP.audio.addEventListener("timeupdate", APP.timeHandler); 
     APP.audio.addEventListener('error', APP.errorHandler);
@@ -57,8 +62,7 @@ const APP = {
     if (APP.audio.src) {
       //something is loaded
       APP.audio.play();
-      document.getElementById('btnPause').classList.remove('hidden');
-      document.getElementById('btnPlay').classList.add('hidden');
+      document.getElementById('btnPlay').innerHTML = '<i class="material-symbols-rounded">pause</i>'
     } else {
       console.warn('You need to load a track first');
     }
@@ -66,8 +70,7 @@ const APP = {
   pause: () => {
     //pause the track loaded into APP.audio playing
     APP.audio && APP.audio.pause();
-    document.getElementById('btnPause').classList.add('hidden');
-    document.getElementById('btnPlay').classList.remove('hidden');
+    document.getElementById('btnPlay').innerHTML = '<i class="material-symbols-rounded">play_arrow</i>'
   },
   convertTimeDisplay: (seconds) => {
     //convert the seconds parameter to `00:00` style display
