@@ -295,6 +295,7 @@ button:hover {
 
     .playlist {
         grid-column: 7 / 13;
+        margin-top: 2rem;
     }
 
     .playlist ul li a {
