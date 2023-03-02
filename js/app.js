@@ -13,10 +13,14 @@ const APP = {
   addListeners: () => {
     //add event listeners for interface elements
     document.getElementById('btnPlay').addEventListener('click', APP.playStopAction)
+    document.getElementById('btnNext').addEventListener('click', APP.next)
+    document.getElementById('btnPrev').addEventListener('click', APP.previous)
+    document.querySelector('ul').addEventListener('click', APP.playSelected)
     //add event listeners for APP.audio
     APP.audio.addEventListener('timeupdate', APP.timeHandler); 
     APP.audio.addEventListener('durationchange', APP.durationchange);
     APP.audio.addEventListener('error', APP.errorHandler);
+    APP.audio.addEventListener('ended', APP.playNext);
   },
   durationchange: (ev) => {
     //value for duration has changed
@@ -24,7 +28,7 @@ const APP = {
   },
   buildPlaylist: () => {
     //read the contents of MEDIA and create the playlist
-    // APP.trackTimes();
+    APP.trackTimes();
     const playlist = document.querySelector('.playlist > ul');
     playlist.innerHTML = APP.tracks.map((song) => {
       return `<li class="track__item" id="${song.track}">
@@ -61,7 +65,6 @@ const APP = {
     document.querySelector('.current-time').innerHTML = currentTime;
   },
   play: () => {
-    console.log(media[APP.currentTrack].track)
     document.getElementById(`${media[APP.currentTrack].track}`).classList.add('actual');
     //start the track loaded into APP.audio playing
     if (APP.audio.src) {
@@ -77,6 +80,45 @@ const APP = {
     APP.audio && APP.audio.pause();
     document.getElementById('btnPlay').innerHTML = '<i class="material-symbols-rounded">play_arrow</i>'
   },
+  next: () => {
+    document.getElementById(`${media[APP.currentTrack].track}`).classList.remove('actual');
+    APP.audio.pause(); //stop the current track playing
+    APP.currentTrack++; //increment the value
+    if (APP.currentTrack >= media.length) {
+      APP.currentTrack = 0;
+    }
+    //call the function to load the MEDIA[APP.currentTrack] src into APP.audio.src
+    APP.loadCurrentTrack();
+    //then call your function to play the new track
+    APP.play();
+  },
+  previous: () => {
+    document.getElementById(`${media[APP.currentTrack].track}`).classList.remove('actual');
+    APP.audio.pause(); //stop the current track playing
+    --APP.currentTrack; //increment the value
+    if (APP.currentTrack < 0) {
+      APP.currentTrack = media.length - 1;
+    }
+    //call the function to load the MEDIA[APP.currentTrack] src into APP.audio.src
+    APP.loadCurrentTrack();
+    //then call your function to play the new track
+    APP.play();
+  },
+  playNext: () => {
+    APP.next();
+  },
+  playSelected: (ev) => {
+    APP.audio.pause();
+    let index = media.findIndex((song) => {
+      return song.track === ev.target.closest('li').id;
+    })
+    APP.audio.pause();
+    document.getElementById(`${media[APP.currentTrack].track}`).classList.remove('actual');
+    APP.currentTrack = index;
+    APP.loadCurrentTrack();
+    APP.play();
+
+  },
   convertTimeDisplay: (seconds) => {
     //convert the seconds parameter to `00:00` style display
     let minutes = Math.floor(seconds / 60);
@@ -85,33 +127,31 @@ const APP = {
   },
   errorHandler: () => {
     console.warn('Error loading: ', APP.audio.src);
+  },
+  trackTimes: () => {
+    APP.tracks.forEach((song) => {
+      //create a temporary audio element to open the audio file
+      let tempAudio = new Audio(`./media/${song.track}`);
+      //listen for the event
+      tempAudio.addEventListener('durationchange', (ev) => {
+        //`tempAudio` and `track` are both accessible from inside this function
+        //update the array item with the duration value
+        let duration = ev.target.duration;
+        song['duration'] = duration;
+        //update the display by finding the playlist item with the matching img src
+        //or track title or track id...
+        let thumbnails = document.querySelectorAll('.track__item img');
+        thumbnails.forEach((thumb) => {
+          if (thumb.src.includes(song.thumbnail)) {
+            //convert the duration in seconds to a 00:00 string
+            let timeString = APP.convertTimeDisplay(duration);
+            //update the playlist display for the matching item
+            thumb.closest('.track__item').querySelector('time').innerHTML = timeString;
+          }
+        });
+      });
+    });
   }
-  // trackTimes: () => {
-  //   APP.tracks.forEach((song) => {
-  //     //create a temporary audio element to open the audio file
-  //     let tempAudio = new Audio(`./media/${song.track}`);
-  //     //listen for the event
-  //     tempAudio.addEventListener('durationchange', (ev) => {
-  //       //`tempAudio` and `track` are both accessible from inside this function
-  //       //update the array item with the duration value
-  //       let duration = ev.target.duration;
-  //       song['duration'] = duration;
-  //       //update the display by finding the playlist item with the matching img src
-  //       //or track title or track id...
-  //       let thumbnails = document.querySelectorAll('.track__item img');
-  //       console.log(thumbnails)
-  //       thumbnails.forEach((thumb) => {
-  //         if (thumb.src.includes(song.thumbnail)) {
-  //           //convert the duration in seconds to a 00:00 string
-  //           let timeString = APP.convertTimeDisplay(duration);
-  //           //update the playlist display for the matching item
-  //           console.log(thumb.closest('.track__item').querySelector('time'))
-  //           thumb.closest('.track__item').querySelector('time').innerHTML = timeString;
-  //         }
-  //       });
-  //     });
-  //   });
-  // }
 };
 
 document.addEventListener('DOMContentLoaded', APP.init)
