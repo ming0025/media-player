@@ -12,23 +12,22 @@ const APP = {
   },
   addListeners: () => {
     //add event listeners for interface elements
-    document.getElementById('btnPlay').addEventListener('click', (ev) => {
-      if (ev.target.innerHTML == '<i class="material-symbols-rounded">play_arrow</i>' || ev.target.innerHTML == 'play_arrow') {
-        APP.play();
-      } else if (ev.target.innerHTML == '<i class="material-symbols-rounded">pause</i>' || ev.target.innerHTML == 'pause'){
-        APP.pause();
-      }
-    })
+    document.getElementById('btnPlay').addEventListener('click', APP.playStopAction)
     //add event listeners for APP.audio
-    APP.audio.addEventListener("timeupdate", APP.timeHandler); 
+    APP.audio.addEventListener('timeupdate', APP.timeHandler); 
+    APP.audio.addEventListener('durationchange', APP.durationchange);
     APP.audio.addEventListener('error', APP.errorHandler);
+  },
+  durationchange: (ev) => {
+    //value for duration has changed
+    document.querySelector('.total-time').innerHTML = APP.convertTimeDisplay(APP.audio.duration);
   },
   buildPlaylist: () => {
     //read the contents of MEDIA and create the playlist
     // APP.trackTimes();
     const playlist = document.querySelector('.playlist > ul');
     playlist.innerHTML = APP.tracks.map((song) => {
-      return `<li class="track__item" id="${APP.tracks.indexOf(song)}">
+      return `<li class="track__item" id="${song.track}">
                         <a>
                             <div class="track__thumb">
                                 <img src="./img/${song.thumbnail}" alt="artist album art thumbnail" />
@@ -44,6 +43,13 @@ const APP = {
                     </li>`
     }).join('')
   },
+  playStopAction: (ev) => {
+    if (ev.target.innerHTML == '<i class="material-symbols-rounded">play_arrow</i>' || ev.target.innerHTML == 'play_arrow') {
+      APP.play();
+    } else if (ev.target.innerHTML == '<i class="material-symbols-rounded">pause</i>' || ev.target.innerHTML == 'pause'){
+      APP.pause();
+    }
+  },
   loadCurrentTrack: () => {
     //use the currentTrack value to set the src of the APP.audio element
     APP.audio.src = `./media/${APP.tracks[APP.currentTrack].track}`
@@ -51,13 +57,12 @@ const APP = {
     album.setAttribute('src', `./img/${APP.tracks[APP.currentTrack].large}` )
   },
   timeHandler: () => {
-    let totalTime = APP.convertTimeDisplay(APP.audio.duration);
-    document.querySelector('.total-time').innerHTML = totalTime;
     const currentTime = APP.convertTimeDisplay(APP.audio.currentTime);
     document.querySelector('.current-time').innerHTML = currentTime;
   },
   play: () => {
-    document.getElementById(`${APP.currentTrack}`).classList.add('actual');
+    console.log(media[APP.currentTrack].track)
+    document.getElementById(`${media[APP.currentTrack].track}`).classList.add('actual');
     //start the track loaded into APP.audio playing
     if (APP.audio.src) {
       //something is loaded
