@@ -172,9 +172,10 @@ footer {
 }
 
 .progress {
+    position: relative;
     transform: translate(5%, 50%);
-    height: .5rem;
-    width: 90%;
+    height: .8rem;
+    width: 90.3%;
     background: rgba(0, 0, 0, 0.25);
     border-radius: 6px;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.872), 0 2px rgba(41, 4, 40, 0.789);
@@ -186,8 +187,9 @@ footer {
 
 .progress-bar {
     transform: translate(2.1px, 2.5px) ;
-    height: .3rem;
-    width: 0.1%;
+    height: .6rem;
+    transition: width .1s linear;
+    width: 0;
     box-shadow: 0 0 1rem var(--accent-color);
     background-color: var(--accent-color);
     border-radius: 4px;
@@ -195,6 +197,10 @@ footer {
     -moz-transform: translate(2.1px, 2.5px) ;
     -ms-transform: translate(2.1px, 2.5px) ;
     -o-transform: translate(2.1px, 2.5px) ;
+    -webkit-transition: width .1s linear;
+    -moz-transition: width .1s linear;
+    -ms-transition: width .1s linear;
+    -o-transition: width .1s linear;
 }
 
 .track__time {
