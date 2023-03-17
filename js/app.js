@@ -187,12 +187,12 @@ const APP = {
   updateProgressBar: () => {
     const progressBar = document.querySelector('.progress-bar');
     const songPercentage = (APP.audio.currentTime / APP.audio.duration) * 100;
+    // console.log(songPercentage)
     progressBar.style.width = `${songPercentage}%`;
   },
   updateWhenClick: (ev) => {
-    console.log(ev.target)
-    const progressBar = document.querySelector('.progress-bar');
-    const newTime = (ev.offsetX / ev.target.offsetWidth) * APP.audio.duration;
+    const progress = document.querySelector('.progress');
+    const newTime = (ev.offsetX / progress.offsetWidth) * APP.audio.duration;
     APP.audio.currentTime = newTime;
   }
 };
