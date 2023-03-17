@@ -158,19 +158,13 @@ const APP = {
   shuffle: (array) => {
     let currentIndex = array.length;
     let temporaryValue, randomIndex;
-
-    // while there remain elements to shuffle...
     while (currentIndex !== 0) {
-      // pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-
-      // and swap it with the current element.
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-
     return array;
   },
   shufflePlaylist: () => {
@@ -187,7 +181,6 @@ const APP = {
   updateProgressBar: () => {
     const progressBar = document.querySelector('.progress-bar');
     const songPercentage = (APP.audio.currentTime / APP.audio.duration) * 100;
-    // console.log(songPercentage)
     progressBar.style.width = `${songPercentage}%`;
   },
   updateWhenClick: (ev) => {
