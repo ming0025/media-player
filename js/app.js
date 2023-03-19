@@ -69,6 +69,7 @@ const APP = {
   },
   play: () => {
     document.getElementById(`${APP.tracks[APP.currentTrack].track}`).classList.add('actual');
+    document.querySelector('.album_art__full>img').classList.add('playing');
     //start the track loaded into APP.audio playing
     if (APP.audio.src) {
       //something is loaded
@@ -81,6 +82,7 @@ const APP = {
   pause: () => {
     //pause the track loaded into APP.audio playing
     APP.audio && APP.audio.pause();
+    document.querySelector('.album_art__full>img').classList.remove('playing');
     document.getElementById('btnPlay').innerHTML = '<i class="material-symbols-rounded">play_arrow</i>'
   },
   next: () => {
