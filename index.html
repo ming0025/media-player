@@ -1,58 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Retro Player</title>
-    <link type="image/png" sizes="96x96" rel="icon" href="./img/icons8-cassette-96.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Monoton' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link
+      type="image/png"
+      sizes="96x96"
+      rel="icon"
+      href="./img/icons8-cassette-96.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Monoton"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
     <script src="./js/utils.js" type="module"></script>
     <script src="./js/app.js" type="module"></script>
-    <meta http-equiv="Content-Security-Policy" 
-    content="default-src https: ;
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src https: ;
         img-src 'self';
         script-src 'self' 'unsafe-inline'; 
         style-src 'self' https://fonts.googleapis.com; 
         font-src 'self' https://fonts.gstatic.com;
         media-src 'self'; 
-        connect-src 'self';">
-</head>
-<body>
+        connect-src 'self';"
+    />
+  </head>
+  <body>
     <header>
-        <h1>Retro Player</h1>
+      <h1>Retro Player</h1>
     </header>
     <main>
-        <div class="content">
-            <div class="album_art__full">
-                    <img src="" alt="full album art" class=""/>
-                <button id="btnShuffle" title="shuffle"><i class="material-symbols-rounded">shuffle</i></button>
-            </div>
-            <div class="playlist">
-                <ul></ul>
-            </div>
+      <div class="content">
+        <div class="album_art__full">
+          <img src="" alt="full album art" class="" />
+          <button id="btnShuffle" title="shuffle">
+            <i class="material-symbols-rounded">shuffle</i>
+          </button>
         </div>
-
+        <div class="playlist">
+          <ul></ul>
+        </div>
+      </div>
     </main>
     <footer>
-        <section class="progress">
-            <div id="progBar" class="progress-bar"></div>
-        </section>
-        <div class="times">
-            <time datetime="" class="current-time">00:00</time> &nbsp;|&nbsp;
-            <time datetime="" class="total-time">00:00</time>
-        </div>
-        <div class="controls">
-            <button class="btnPrev" id="btnPrev" title="previous track"><i class="material-symbols-rounded">skip_previous</i></button>
-            <button class="btnPlay" id="btnPlay" title="play"><i class="material-symbols-rounded">play_arrow</i></button>
-            <button class="btnNext" id="btnNext" title="next track"><i class="material-symbols-rounded">skip_next</i></button>
-        </div>
+      <section class="progress">
+        <div id="progBar" class="progress-bar"></div>
+      </section>
+      <div class="times">
+        <time datetime="" class="current-time">00:00</time> &nbsp;|&nbsp;
+        <time datetime="" class="total-time">00:00</time>
+      </div>
+      <div class="controls">
+        <button class="btnPrev" id="btnPrev" title="previous track">
+          <i class="material-symbols-rounded">skip_previous</i>
+        </button>
+        <button class="btnPlay" id="btnPlay" title="play">
+          <i class="material-symbols-rounded">play_arrow</i>
+        </button>
+        <button class="btnNext" id="btnNext" title="next track">
+          <i class="material-symbols-rounded">skip_next</i>
+        </button>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
