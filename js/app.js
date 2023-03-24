@@ -172,7 +172,6 @@ const APP = {
   shufflePlaylist: () => {
     document.getElementById(`${APP.tracks[APP.currentTrack].track}`).classList.remove('actual');
     APP.pause();
-    document.getElementById('btnPlay').innerHTML = '<i class="material-symbols-rounded">pause</i>'
     let arrSongs = APP.tracks;
     APP.tracks = APP.shuffle(arrSongs);
     APP.currentTrack = 0;
