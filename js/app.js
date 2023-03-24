@@ -159,11 +159,11 @@ const APP = {
   },
   shuffle: (array) => {
     let currentIndex = array.length;
-    let temporaryValue, randomIndex;
+    let randomIndex;
     while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
-      temporaryValue = array[currentIndex];
+      let temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
