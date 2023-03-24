@@ -12,17 +12,19 @@ const APP = {
   },
   addListeners: () => {
     //add event listeners for interface elements
-    document.getElementById('btnPlay').addEventListener('click', APP.playStopAction)
-    document.getElementById('btnNext').addEventListener('click', APP.next)
-    document.getElementById('btnPrev').addEventListener('click', APP.previous)
-    document.querySelector('ul').addEventListener('click', APP.playSelected)
+    document.getElementById('btnPlay').addEventListener('click', APP.playStopAction);
+    document.getElementById('btnNext').addEventListener('click', APP.next);
+    document.getElementById('btnPrev').addEventListener('click', APP.previous);
+    document.querySelector('ul').addEventListener('click', APP.playSelected);
+    document.getElementById('btnShuffle').addEventListener('click', APP.shufflePlaylist);
+    document.querySelector('.progress').addEventListener('click', APP.updateWhenClick);
     //add event listeners for APP.audio
     APP.audio.addEventListener('timeupdate', APP.timeHandler); 
     APP.audio.addEventListener('durationchange', APP.durationchange);
     APP.audio.addEventListener('error', APP.errorHandler);
     APP.audio.addEventListener('ended', APP.playNext);
   },
-  durationchange: (ev) => {
+  durationchange: () => {
     //value for duration has changed
     document.querySelector('.total-time').innerHTML = APP.convertTimeDisplay(APP.audio.duration);
   },
@@ -63,9 +65,11 @@ const APP = {
   timeHandler: () => {
     const currentTime = APP.convertTimeDisplay(APP.audio.currentTime);
     document.querySelector('.current-time').innerHTML = currentTime;
+    APP.updateProgressBar();
   },
   play: () => {
-    document.getElementById(`${media[APP.currentTrack].track}`).classList.add('actual');
+    document.getElementById(`${APP.tracks[APP.currentTrack].track}`).classList.add('actual');
+    document.querySelector('.album_art__full>img').classList.add('playing');
     //start the track loaded into APP.audio playing
     if (APP.audio.src) {
       //something is loaded
@@ -78,13 +82,14 @@ const APP = {
   pause: () => {
     //pause the track loaded into APP.audio playing
     APP.audio && APP.audio.pause();
+    document.querySelector('.album_art__full>img').classList.remove('playing');
     document.getElementById('btnPlay').innerHTML = '<i class="material-symbols-rounded">play_arrow</i>'
   },
   next: () => {
-    document.getElementById(`${media[APP.currentTrack].track}`).classList.remove('actual');
+    document.getElementById(`${APP.tracks[APP.currentTrack].track}`).classList.remove('actual');
     APP.audio.pause(); //stop the current track playing
     APP.currentTrack++; //increment the value
-    if (APP.currentTrack >= media.length) {
+    if (APP.currentTrack >= APP.tracks.length) {
       APP.currentTrack = 0;
     }
     //call the function to load the MEDIA[APP.currentTrack] src into APP.audio.src
@@ -93,11 +98,11 @@ const APP = {
     APP.play();
   },
   previous: () => {
-    document.getElementById(`${media[APP.currentTrack].track}`).classList.remove('actual');
+    document.getElementById(`${APP.tracks[APP.currentTrack].track}`).classList.remove('actual');
     APP.audio.pause(); //stop the current track playing
     --APP.currentTrack; //increment the value
     if (APP.currentTrack < 0) {
-      APP.currentTrack = media.length - 1;
+      APP.currentTrack = APP.tracks.length - 1;
     }
     //call the function to load the MEDIA[APP.currentTrack] src into APP.audio.src
     APP.loadCurrentTrack();
@@ -109,11 +114,11 @@ const APP = {
   },
   playSelected: (ev) => {
     APP.audio.pause();
-    let index = media.findIndex((song) => {
+    let index = APP.tracks.findIndex((song) => {
       return song.track === ev.target.closest('li').id;
     })
     APP.audio.pause();
-    document.getElementById(`${media[APP.currentTrack].track}`).classList.remove('actual');
+    document.getElementById(`${APP.tracks[APP.currentTrack].track}`).classList.remove('actual');
     APP.currentTrack = index;
     APP.loadCurrentTrack();
     APP.play();
@@ -151,6 +156,37 @@ const APP = {
         });
       });
     });
+  },
+  shuffle: (array) => {
+    let currentIndex = array.length;
+    while (currentIndex !== 0) {
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      let temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  },
+  shufflePlaylist: () => {
+    document.getElementById(`${APP.tracks[APP.currentTrack].track}`).classList.remove('actual');
+    APP.pause();
+    let arrSongs = APP.tracks;
+    APP.tracks = APP.shuffle(arrSongs);
+    APP.currentTrack = 0;
+    APP.loadCurrentTrack();
+    APP.buildPlaylist();
+    APP.play();
+  },
+  updateProgressBar: () => {
+    const progressBar = document.querySelector('.progress-bar');
+    const songPercentage = (APP.audio.currentTime / APP.audio.duration) * 100;
+    progressBar.style.width = `${songPercentage}%`;
+  },
+  updateWhenClick: (ev) => {
+    const progress = document.querySelector('.progress');
+    const newTime = (ev.offsetX / progress.offsetWidth) * APP.audio.duration;
+    APP.audio.currentTime = newTime;
   }
 };
 
